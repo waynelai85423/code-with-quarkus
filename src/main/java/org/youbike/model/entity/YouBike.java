@@ -1,19 +1,19 @@
 package org.youbike.model.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import io.quarkus.mongodb.panache.common.MongoEntity;
 import java.math.BigDecimal;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.bson.codecs.pojo.annotations.BsonId;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@Entity
-public class YouBike {
+@MongoEntity(collection = "stations")
+public class YouBike{
 
-    @Id
+    @BsonId
     private String sno;
     private String sna;
     private String sarea;

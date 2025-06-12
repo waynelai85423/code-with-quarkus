@@ -1,10 +1,10 @@
 package org.youbike.repository;
 
-import io.quarkus.hibernate.orm.panache.PanacheRepository;
+import io.quarkus.mongodb.panache.PanacheMongoRepositoryBase;
 import jakarta.enterprise.context.ApplicationScoped;
 import org.youbike.model.entity.YouBike;
 
 @ApplicationScoped
-public class YouBikeRepo implements PanacheRepository<YouBike> {
+public class YouBikeRepo implements PanacheMongoRepositoryBase<YouBike,String> {
 
 }

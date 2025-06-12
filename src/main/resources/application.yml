@@ -8,3 +8,17 @@ quarkus:
       scope: javax.inject.Singleton
       connect-timeout: 5000
       read-timeout: 10000
+  mongodb:
+    connection-string: mongodb://admin:password@localhost:27017/youbike?authSource=admin
+    database: youbike
+  redis:
+    hosts: redis://localhost:6379
+    timeout: 10s
+    client-type: standalone
+  cache:
+    redis:
+      enable: true
+      "stations":
+        expire-after-write: 1H
+  scheduler:
+    enabled: true

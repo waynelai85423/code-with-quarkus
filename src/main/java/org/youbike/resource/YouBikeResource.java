@@ -2,6 +2,7 @@ package org.youbike.resource;
 
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
@@ -30,5 +31,12 @@ public class YouBikeResource  {
     @Produces(MediaType.APPLICATION_JSON)
     public YouBikeDto getStationById(@PathParam("id") String id) {
         return youBikeService.getStationById(id);
+    }
+
+    @POST
+    @Path("/import")
+    @Produces(MediaType.APPLICATION_JSON)
+    public void importData() {
+        youBikeService.importData();
     }
 }
