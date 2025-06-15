@@ -7,9 +7,10 @@ import jakarta.ws.rs.ext.Provider;
 @Provider
 public class ExceptionHandler implements ExceptionMapper<Exception> {
     @Override
-    public Response toResponse(Exception exception) {
+    public Response toResponse(Exception e) {
+        e.printStackTrace();
         return Response.status(Response.Status.BAD_REQUEST)
-                .entity(exception.getMessage())
+                .entity(e.getMessage())
                 .build();
     }
 }

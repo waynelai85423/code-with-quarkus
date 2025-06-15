@@ -1,4 +1,10 @@
 quarkus:
+  log:
+    category:
+      "io.quarkus.security":
+        level: DEBUG
+      "io.smallrye.jwt":
+        level: DEBUG
   http:
     port: 8080
     root-path: /api
@@ -8,6 +14,15 @@ quarkus:
       scope: javax.inject.Singleton
       connect-timeout: 5000
       read-timeout: 10000
+  datasource:
+    db-kind: mysql
+    username: admin
+    password: password
+    jdbc:
+      url: jdbc:mysql://localhost:3306/youbike?allowPublicKeyRetrieval=true&useSSL=false
+  hibernate-orm:
+    database:
+      generation: update
   mongodb:
     connection-string: mongodb://admin:password@localhost:27017/youbike?authSource=admin
     database: youbike
@@ -22,3 +37,23 @@ quarkus:
         expire-after-write: 1H
   scheduler:
     enabled: true
+
+  smallrye-openapi:
+    path: /api-docs
+  swagger-ui:
+    enable: true
+    path: /swagger-ui
+
+smallrye:
+  jwt:
+    sign:
+      key:
+        location: rsaPrivateKey.pem
+mp:
+  jwt:
+    verify:
+      publickey:
+        location: publicKey.pem
+      signature:
+        algorithm: RS256
+      issuer: https://yubike-app.com.issuer
