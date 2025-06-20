@@ -5,6 +5,7 @@ import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
+import jakarta.ws.rs.NotFoundException;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
@@ -70,7 +71,7 @@ public class UserResource {
     @RolesAllowed("user")
     public Response me() {
         String username = jwt.getName();
-        User user = userService.findByUserName(username).orElse(null);
+        User user = userService.findByUserName(username).orElseThrow(() -> new NotFoundException("User not found: " + username));
         return Response.ok(userMapper.toDto(user)).build();
     }
 
