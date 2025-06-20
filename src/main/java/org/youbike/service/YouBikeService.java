@@ -64,7 +64,7 @@ public class YouBikeService {
     }
 
     //每1分鐘執行一次，系統啟動後延遲10秒開始執行
-    @Scheduled(identity = "import-stations-task", every = "5m",delayed = "10s")
+    @Scheduled(identity = "import-stations-task", every = "1m",delayed = "10s")
     @CacheInvalidateAll(cacheName = "stations")
     @CacheInvalidateAll(cacheName = "stations-change")
     public void importData() {
