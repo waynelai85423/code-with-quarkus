@@ -9,6 +9,7 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import java.util.List;
 import org.youbike.model.dto.YouBikeDto;
+import org.youbike.model.entity.StationChange;
 import org.youbike.service.YouBikeService;
 
 
@@ -17,7 +18,6 @@ public class YouBikeResource  {
 
     @Inject
     YouBikeService youBikeService;
-    
 
     @GET
     @Path("/list")
@@ -33,10 +33,18 @@ public class YouBikeResource  {
         return youBikeService.getStationById(id);
     }
 
+    @GET
+    @Path("/changes/recent")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<StationChange> getYouBikeChangeRecent() {
+        return youBikeService.getYouBikeChangeRecent("recent10");
+    }
+
     @POST
     @Path("/import")
     @Produces(MediaType.APPLICATION_JSON)
     public void importData() {
         youBikeService.importData();
     }
+
 }

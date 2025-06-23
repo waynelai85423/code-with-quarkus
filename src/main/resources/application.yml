@@ -57,3 +57,17 @@ mp:
       signature:
         algorithm: RS256
       issuer: https://yubike-app.com.issuer
+  messaging:
+    outgoing:
+      station-change-out:
+        topic: station-change
+      youbike-cache-update-out:
+        topic: youbike-cache-update
+    incoming:
+      station-change-in:
+        topic: station-change
+      youbike-cache-update-in:
+        topic: youbike-cache-update
+
+
+
