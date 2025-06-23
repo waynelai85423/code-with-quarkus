@@ -2,7 +2,6 @@ package org.youbike.auth;
 
 import io.smallrye.jwt.build.Jwt;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
 import java.util.Map;
 import java.util.Set;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
@@ -11,7 +10,6 @@ import org.youbike.model.entity.User;
 @ApplicationScoped
 public class JwtUtil {
 
-    @Inject
     @ConfigProperty(name = "mp.jwt.verify.issuer")
     String issuer;
 
